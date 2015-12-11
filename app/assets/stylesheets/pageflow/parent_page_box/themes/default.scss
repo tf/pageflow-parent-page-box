@@ -78,7 +78,7 @@
 
     width: 170px;
     height: 95px;
-    margin: 5px 0;
+    margin: 12px 0 5px 0;
   }
 
   .parent_page_box-separator {
@@ -86,6 +86,7 @@
     border-bottom: solid 1px $parent-page-box-separator-color;
   }
 
+  .parent_page_box-standalong_back_label,
   .parent_page_box-chapter_title {
     font-weight: bold;
   }

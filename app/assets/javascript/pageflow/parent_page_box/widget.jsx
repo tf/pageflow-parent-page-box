@@ -19,11 +19,7 @@ function renderOverlay(page) {
   if (page) {
     return (
       <div className="parent_page_box-overlay">
-        Zurück zu Kapitel
-        <div className="parent_page_box-chapter_title">
-          {page.chapter.title}
-        </div>
-        <hr className="parent_page_box-separator" />
+        {renderBackTo(page.chapter)}
         <span className="parent_page_box-page_title">
           {page.title}
         </span>
@@ -33,6 +29,25 @@ function renderOverlay(page) {
   }
   else {
     return null;
+  }
+}
+
+function renderBackTo(chapter) {
+  if (chapter.title) {
+    return (
+      <div>
+        Zurück zu Kapitel
+        <div className="parent_page_box-chapter_title">
+          {chapter.title}
+        </div>
+        <hr className="parent_page_box-separator" />
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className="parent_page_box-standalong_back_label">Zurück zu</div>
+    );
   }
 }
 
