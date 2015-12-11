@@ -1,0 +1,96 @@
+@import "pageflow/extendables";
+
+.parent_page_box {
+  $parent-page-box-background-color: $basic-background-color-transparent !default;
+  $parent-page-box-border: solid 2px #aaa !default;
+
+  $background-color: $parent-page-box-background-color;
+  $border: $parent-page-box-border;
+
+  $indicator-width: 40px;
+  $indicator-height: 50px;
+  $indicator-margin: 5px;
+
+  @extend %pageflow-widget;
+
+  position: absolute;
+  top: 75%;
+  left: 0;
+  z-index: 100;
+
+  .parent_page_box-link {
+    @include background-icon-center($color: #ddd);
+    @include fa-arrow-left-icon;
+
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: $indicator-height;
+    width: $indicator-width;
+
+    background-color: $background-color;
+    text-decoration: none;
+
+    @include transition(transform 0.3s ease, visibility 0.3s ease);
+    @include transition-delay(0);
+    @include transform(translate3d(-100%, 0, 0));
+    visibility: hidden;
+
+
+    &.is_visible {
+      @include transform(translate3d(0, 0, 0));
+      @include transition-delay(1s);
+      visibility: visible;
+    }
+  }
+
+  .parent_page_box-overlay {
+    position: absolute;
+    bottom: 0;
+    left: $indicator-width + $indicator-margin;
+    padding: 15px;
+    display: none;
+    pointer-events: none;
+
+    background-color: $background-color;
+  }
+
+  &:hover {
+    .parent_page_box-link {
+      @include background-icon-color(#fff);
+    }
+
+    .parent_page_box-overlay {
+      display: block;
+    }
+  }
+
+  .parent_page_box-thumbnail {
+    @extend %pageflow-page-type-thumbnail;
+
+    width: 170px;
+    height: 95px;
+    margin: 5px 0;
+  }
+
+  .parent_page_box-separator {
+    border: none;
+    border-bottom: solid 1px #9c9c9c;
+  }
+
+  .parent_page_box-chapter_title {
+    font-weight: bold;
+  }
+}
+
+@include phone {
+  .parent_page_box {
+    display: none;
+  }
+}
+
+@include pad_portrait {
+  .parent_page_box {
+    display: none;
+  }
+}
