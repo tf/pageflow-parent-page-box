@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'pageflow', '~> 0.10.pre'
+  spec.add_runtime_dependency 'pageflow-react'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
