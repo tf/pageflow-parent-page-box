@@ -1,10 +1,17 @@
 @import "pageflow/extendables";
 
 .parent_page_box {
+  $basic-text-color: #fff !default;
+
   $parent-page-box-background-color: $basic-background-color-transparent !default;
+  $parent-page-box-text-color: $basic-text-color !default;
   $parent-page-box-border: solid 2px #aaa !default;
+  $parent-page-box-indicator-icon-color: fade-out($parent-page-box-text-color, 0.2);
+  $parent-page-box-indicator-icon-hover-color: $parent-page-box-text-color;
+  $parent-page-box-separator-color: fade-out($parent-page-box-text-color, 0.2);
 
   $background-color: $parent-page-box-background-color;
+  $text-color: $parent-page-box-text-color;
   $border: $parent-page-box-border;
 
   $indicator-width: 40px;
@@ -19,7 +26,7 @@
   z-index: 100;
 
   .parent_page_box-link {
-    @include background-icon-center($color: #ddd);
+    @include background-icon-center($color: $parent-page-box-indicator-icon-color);
     @include fa-arrow-left-icon;
 
     position: absolute;
@@ -53,11 +60,12 @@
     pointer-events: none;
 
     background-color: $background-color;
+    color: $text-color;
   }
 
   &:hover {
     .parent_page_box-link {
-      @include background-icon-color(#fff);
+      @include background-icon-color($parent-page-box-indicator-icon-hover-color);
     }
 
     .parent_page_box-overlay {
@@ -75,7 +83,7 @@
 
   .parent_page_box-separator {
     border: none;
-    border-bottom: solid 1px #9c9c9c;
+    border-bottom: solid 1px $parent-page-box-separator-color;
   }
 
   .parent_page_box-chapter_title {
