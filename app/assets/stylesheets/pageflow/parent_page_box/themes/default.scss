@@ -11,7 +11,7 @@
   $indicator-height: 50px;
   $indicator-margin: 5px;
 
-  @extend %pageflow-widget;
+  @extend %pageflow_widget;
 
   position: absolute;
   top: 75%;
@@ -66,7 +66,7 @@
   }
 
   .parent_page_box-thumbnail {
-    @extend %pageflow-page-type-thumbnail;
+    @extend %pageflow_page_type_thumbnail;
 
     width: 170px;
     height: 95px;
