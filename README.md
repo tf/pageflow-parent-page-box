@@ -20,10 +20,10 @@ Register the plugin inside the configure block in `config/initializers/pageflow.
 Include javascripts and stylesheets:
 
     # app/assets/javascripts/components.js
-    //= require pageflow/parent_page_box
+    //= require pageflow/parent_page_box/components
 
     # app/assets/javascripts/pageflow/application.js
-    //= require pageflow/parent_page_box/components
+    //= require pageflow/parent_page_box
 
     # app/assets/stylesheets/pageflow/themes/default.scss
     @import "pageflow/parent_page_box/themes/default";
