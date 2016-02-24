@@ -26,8 +26,8 @@
   z-index: 100;
 
   .parent_page_box-link {
-    @include background-icon-center($color: $parent-page-box-indicator-icon-color);
-    @include fa-arrow-left-icon;
+    @include background-icon-center($color: $parent-page-box-indicator-icon-color, $left: 48%, $font-size: 30px);
+    @include fa-angle-left-icon;
 
     position: absolute;
     bottom: 0;
@@ -43,6 +43,9 @@
     @include transform(translate3d(-100%, 0, 0));
     visibility: hidden;
 
+    &::before {
+      font-weight: bold;
+    }
 
     &.is_visible {
       @include transform(translate3d(0, 0, 0));
