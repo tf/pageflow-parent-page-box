@@ -1,0 +1,8 @@
+de:
+  pageflow:
+    parent_page_box:
+      widget_type_name: "Box am linken Seitenrand"
+    widgets:
+      roles:
+        parent_page_box:
+          "Übergeordnete Seite Hinweis"

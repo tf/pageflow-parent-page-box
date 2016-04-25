@@ -1,0 +1,8 @@
+en:
+  pageflow:
+    parent_page_box:
+      widget_type_name: "Box at left page margin"
+    widgets:
+      roles:
+        parent_page_box:
+          "Parent Page Box"
