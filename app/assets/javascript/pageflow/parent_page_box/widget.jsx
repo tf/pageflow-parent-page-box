@@ -10,16 +10,16 @@ function ParentPageBox(props) {
          tabIndex="2"
          onClick={handleClick} />
 
-      {renderOverlay(props.parentPage)}
+      {renderOverlay(props.parentPage, props.i18n)}
     </div>
   )
 }
 
-function renderOverlay(page) {
+function renderOverlay(page, i18n) {
   if (page) {
     return (
       <div className="parent_page_box-overlay">
-        {renderBackTo(page.chapter)}
+        {renderBackTo(page.chapter, i18n)}
         <span className="parent_page_box-page_title">
           {page.title}
         </span>
@@ -32,11 +32,11 @@ function renderOverlay(page) {
   }
 }
 
-function renderBackTo(chapter) {
+function renderBackTo(chapter, i18n) {
   if (chapter.title) {
     return (
       <div>
-        Zurück zu Kapitel
+        {i18n.t('pageflow.public.back_to_chapter')}
         <div className="parent_page_box-chapter_title">
           {chapter.title}
         </div>
@@ -46,7 +46,9 @@ function renderBackTo(chapter) {
   }
   else {
     return (
-      <div className="parent_page_box-standalong_back_label">Zurück zu</div>
+      <div className="parent_page_box-standalong_back_label">
+        {i18n.t('pageflow.public.back_to_chapter')}
+      </div>
     );
   }
 }
@@ -58,6 +60,7 @@ function handleClick(event) {
 
 pageflow.parentPageBox.Widget = createWidget(createContainer(ParentPageBox, {
   fragments: {
+    i18n: resolve('i18n'),
     parentPage: resolve('currentParentPage', {
       fragments: {
         chapter: resolve('chapter')
