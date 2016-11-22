@@ -1,4 +1,5 @@
-const {createContainer, createWidget, resolve, classNames} = pageflow.react;
+const {registerWidgetType, connect, combine, classNames} = pageflow.react;
+const {currentParentPageAttributes, currentParentChapterAttributes, t} = pageflow.react.selectors;
 const {PageThumbnail} = pageflow.react.components;
 
 function ParentPageBox(props) {
@@ -10,16 +11,16 @@ function ParentPageBox(props) {
          tabIndex="2"
          onClick={handleClick} />
 
-      {renderOverlay(props.parentPage, props.i18n)}
+      {renderOverlay(props.parentPage, props.parentChapter, props.t)}
     </div>
   )
 }
 
-function renderOverlay(page, i18n) {
+function renderOverlay(page, chapter, t) {
   if (page) {
     return (
       <div className="parent_page_box-overlay">
-        {renderBackTo(page.chapter, i18n)}
+        {renderBackTo(chapter, t)}
         <span className="parent_page_box-page_title">
           {page.title}
         </span>
@@ -32,11 +33,11 @@ function renderOverlay(page, i18n) {
   }
 }
 
-function renderBackTo(chapter, i18n) {
+function renderBackTo(chapter, t) {
   if (chapter.title) {
     return (
       <div>
-        {i18n.t('pageflow.public.back_to_chapter')}
+        {t('pageflow.public.back_to_chapter')}
         <div className="parent_page_box-chapter_title">
           {chapter.title}
         </div>
@@ -47,7 +48,7 @@ function renderBackTo(chapter, i18n) {
   else {
     return (
       <div className="parent_page_box-standalong_back_label">
-        {i18n.t('pageflow.public.back_to_chapter')}
+        {t('pageflow.public.back_to_chapter')}
       </div>
     );
   }
@@ -58,13 +59,10 @@ function handleClick(event) {
   event.preventDefault();
 }
 
-pageflow.parentPageBox.Widget = createWidget(createContainer(ParentPageBox, {
-  fragments: {
-    i18n: resolve('i18n'),
-    parentPage: resolve('currentParentPage', {
-      fragments: {
-        chapter: resolve('chapter')
-      }
-    })
-  }
-}));
+registerWidgetType('parent_page_box', {
+  component: connect(combine({
+    t,
+    parentPage: currentParentPageAttributes(),
+    parentChapter: currentParentChapterAttributes()
+  }))(ParentPageBox)
+});
