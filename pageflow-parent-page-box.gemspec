@@ -16,9 +16,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^spec/})
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'pageflow', '~> 0.10'
+  spec.add_runtime_dependency 'pageflow', '~> 12.0.pre'
   spec.add_runtime_dependency 'pageflow-public-i18n', '~> 1.1'
-  spec.add_runtime_dependency 'pageflow-react'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
