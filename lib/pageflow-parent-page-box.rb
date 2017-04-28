@@ -7,9 +7,7 @@ module Pageflow
     end
 
     def self.widget_type
-      Pageflow::React.create_widget_type('parent_page_box',
-                                         'parent_page_box',
-                                         'pageflow.parentPageBox.Widget')
+      Pageflow::React.create_widget_type('parent_page_box', 'parent_page_box')
     end
   end
 end
